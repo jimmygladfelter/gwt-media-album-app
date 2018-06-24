@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.10.1
+Created-By: 1.8.0_172-b11 (Oracle Corporation)
+Built-By: James
+Build-Date: 2018-06-24 13:05:21
+Build-Version: 1.0-LOCAL-SNAPSHOT_b1
+Build-Script-Version: $Id: build.xml 34 2017-11-16 05:17:28Z bmayer $
+Implementation-Title: gwtalbumapp
+Implementation-Vendor: James C. Gladfelter
+Implementation-Vendor-Id: com.media.album
+Implementation-Version: 1.0-LOCAL-SNAPSHOT
+
