@@ -38,7 +38,7 @@
   <set-configuration-property name="CssResource.style" value="pretty"/>
   
   <!-- Specify the app entry point class.                         -->
-  <entry-point class='com.app.gwt.client.Gwt_app_core_template'/>
+  <entry-point class='com.app.gwt.client.App'/>
 
   <!-- Specify the paths for translatable code                    -->
   <source path='client'/>
@@ -46,8 +46,8 @@
   
   <!-- Debug options (comment out for production builds) -->
   <!-- (should also use -draftCompile compiler argument) -->
-  <!-- 
-  <set-property name="user.agent" value="safari" /> -->
+  <!--  -->
+  <set-property name="user.agent" value="safari" />
 
  
   <!-- DevMode stuff -->
