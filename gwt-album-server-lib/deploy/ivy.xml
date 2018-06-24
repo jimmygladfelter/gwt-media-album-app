@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Licensed to the Apache Software Foundation (ASF) under one
+	or more contributor license agreements.  See the NOTICE file
+	distributed with this work for additional information
+	regarding copyright ownership.  The ASF licenses this file
+	to you under the Apache License, Version 2.0 (the
+	"License"); you may not use this file except in compliance
+	with the License.  You may obtain a copy of the License at
+
+	http://www.apache.org/licenses/LICENSE-2.0
+
+	Unless required by applicable law or agreed to in writing,
+	software distributed under the License is distributed on an
+	"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+	KIND, either express or implied.  See the License for the
+	specific language governing permissions and limitations
+	under the License.	
+-->
+<ivy-module version="2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://ant.apache.org/ivy/schemas/ivy.xsd" xmlns:m="http://ant.apache.org/ivy/maven" xmlns:e="http://ant.apache.org/ivy/extra">
+	
+	<!-- Only These are Acceptable Organisations: com.velox.customerprojects com.velox.internalproducts 
+		com.velox.customerprojects.** com.velox.internalproducts.**  -->
+	<info organisation="com.app.template" module="appserverlib" revision="1.0-LOCAL-SNAPSHOT" status="integration" publication="20180624005940">
+	</info> 
+	<!-- 
+	 !   When -SNAPSHOT is present in the revision the build.xml will publish to the snapshot repository, otherwise it'll publish to the internal repository
+	 !   When -LOCAL-SNAPSHOT is present in the revision the build.xml will publish to a local repository that is desinged to only contain local snapshots (-bmayer 2017-09-11)
+	  -->
+	
+	<!-- default gets mapped as a non optional compile dependency, so default to default -->
+	<configurations defaultconfmapping="default">
+		<conf name="default"/>
+	</configurations>
+	
+	
+	
+	<!--
+	 ! A module typically has one main artifact publication. This is specified in maven by the module type.
+	 ! All releases of the module should contain this artifact and it is the artifact that is pulled in by projects.
+	  
+	 
+	 !  #Artifact types for these main artifact:
+	 !  jar: for modules that go in the app/lib directory
+	 !  plugin: for modules that go in the app/plugin directory
+	 !    You must also have the extension set to plugin for the plugin to be retrieved!
+	 !  war: for modules that go in the webapp directory of tomcat
+	 !    clientSidePlugins: The name of the client side plugin must be different then the server side name so that both modules can retrieved
+	 !      This is commonly done by prepending gwtcps_ to the name
+	  -->
+	<publications>
+		<artifact name="appserverlib" type="jar" ext="jar"/>
+		<!-- <artifact name="project" type="plugin" ext="plugin"/> -->
+		<artifact name="appserverlib" type="pom" ext="pom"/>
+		<artifact name="appserverlib" type="sources" ext="jar" m:classifier="sources"/>
+		<artifact name="appserverlib" type="javadoc" ext="jar" m:classifier="javadoc"/>
+	</publications>
+	
+	<dependencies>
+		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+		<dependency org="mysql" name="mysql-connector-java" rev="8.0.11"/>
+	
+		<dependency org="com.app.template" name="appsharedlib" rev="1.0-LOCAL-SNAPSHOT"/>
+	</dependencies>
+</ivy-module>
