@@ -1,14 +1,14 @@
-package com.app.gwt.shared.template;
+package com.app.gwt.shared.album;
 
 import java.io.Serializable;
 import java.util.Date;
 
 /**
- * Represents a scrapbook template.
+ * Represents a scrapbook album.
  * 
  * @author James C. Gladfelter
  */
-public class ScrapbookTemplate implements Serializable {
+public class ScrapbookAlbum implements Serializable {
 
 	private static final long serialVersionUID = 5377847268132854745L;
 
@@ -20,35 +20,35 @@ public class ScrapbookTemplate implements Serializable {
 	protected String lastModifiedBy;
 	protected Long dateLastModified;
 
-	protected ScrapbookTemplate() {
+	protected ScrapbookAlbum() {
 		// no-op - serializable
 	}
 
 	/**
-	 * Creates a new scrapbook template.
+	 * Creates a new scrapbook album.
 	 * 
 	 * @param name
 	 * @param description
 	 * @param createdBy
 	 */
-	public ScrapbookTemplate(String name, String description, String createdBy) {
+	public ScrapbookAlbum(String name, String description, String createdBy) {
 		this(name, description, createdBy, new Date().getTime());
 	}
 
 	/**
-	 * Creates a new scrapbook template.
+	 * Creates a new scrapbook album.
 	 * 
 	 * @param name
 	 * @param description
 	 * @param createdBy
 	 * @param dateCreated
 	 */
-	public ScrapbookTemplate(String name, String description, String createdBy, Long dateCreated) {
+	public ScrapbookAlbum(String name, String description, String createdBy, Long dateCreated) {
 		this(null, name, description, createdBy, dateCreated, createdBy, dateCreated);
 	}
 
 	/**
-	 * Creates a new scrapbook template.
+	 * Creates a new scrapbook album.
 	 * 
 	 * @param id
 	 * @param name
@@ -58,7 +58,7 @@ public class ScrapbookTemplate implements Serializable {
 	 * @param lastModifiedBy
 	 * @param dateLastModified
 	 */
-	public ScrapbookTemplate(Long id, String name, String description, String createdBy, Long dateCreated,
+	public ScrapbookAlbum(Long id, String name, String description, String createdBy, Long dateCreated,
 			String lastModifiedBy, Long dateLastModified) {
 		super();
 		this.id = id;
@@ -71,133 +71,133 @@ public class ScrapbookTemplate implements Serializable {
 	}
 
 	/**
-	 * Retrieves the ID of the template.
+	 * Retrieves the ID of the album.
 	 * 
-	 * @return the ID of the template.
+	 * @return the ID of the album.
 	 */
 	public Long getId() {
 		return this.id;
 	}
 
 	/**
-	 * Sets the ID of the template.
+	 * Sets the ID of the album.
 	 * 
 	 * @param id
-	 *            - the ID of the template.
+	 *            - the ID of the album.
 	 */
 	public void setId(Long id) {
 		this.id = id;
 	}
 
 	/**
-	 * Retrieves the name of the template.
+	 * Retrieves the name of the album.
 	 * 
-	 * @return the name of the template.
+	 * @return the name of the album.
 	 */
 	public String getName() {
 		return this.name;
 	}
 
 	/**
-	 * Sets the name of the template.
+	 * Sets the name of the album.
 	 * 
 	 * @param name
-	 *            - the name of the template.
+	 *            - the name of the album.
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
 	/**
-	 * Retrieves the description given to the template.
+	 * Retrieves the description given to the album.
 	 * 
-	 * @return the description of the template.
+	 * @return the description of the album.
 	 */
 	public String getDescription() {
 		return this.description;
 	}
 
 	/**
-	 * Sets the description of the template.
+	 * Sets the description of the album.
 	 * 
 	 * @param description
-	 *            - a description given to the template.
+	 *            - a description given to the album.
 	 */
 	public void setDescription(String description) {
 		this.description = description;
 	}
 
 	/**
-	 * Retrieves the email address of the user who created the template.
+	 * Retrieves the email address of the user who created the album.
 	 * 
-	 * @return the email address of the user who created the template.
+	 * @return the email address of the user who created the album.
 	 */
 	public String getCreatedBy() {
 		return this.createdBy;
 	}
 
 	/**
-	 * Sets the email address of the user who created the template.
+	 * Sets the email address of the user who created the album.
 	 * 
 	 * @param createdBy
-	 *            - the email address of the user who created the template.
+	 *            - the email address of the user who created the album.
 	 */
 	public void setCreatedBy(String createdBy) {
 		this.createdBy = createdBy;
 	}
 
 	/**
-	 * Retrieves the date the template was created.
+	 * Retrieves the date the album was created.
 	 * 
-	 * @return the date the template was created.
+	 * @return the date the album was created.
 	 */
 	public Long getDateCreated() {
 		return this.dateCreated;
 	}
 
 	/**
-	 * Sets the date that the template was created.
+	 * Sets the date that the album was created.
 	 * 
 	 * @param dateCreated
-	 *            - the date the template was created.
+	 *            - the date the album was created.
 	 */
 	public void setDateCreated(Long dateCreated) {
 		this.dateCreated = dateCreated;
 	}
 
 	/**
-	 * Retrieves the email address of the user who last modified the template.
+	 * Retrieves the email address of the user who last modified the album.
 	 * 
-	 * @return the email address of the user who last modified the template.
+	 * @return the email address of the user who last modified the album.
 	 */
 	public String getLastModifiedBy() {
 		return this.lastModifiedBy;
 	}
 
 	/**
-	 * Sets the email address of the user who last modified the template.
+	 * Sets the email address of the user who last modified the album.
 	 * 
 	 * @param lastModifiedBy
-	 *            - the email address of the user who last modified the template.
+	 *            - the email address of the user who last modified the album.
 	 */
 	public void setLastModifiedBy(String lastModifiedBy) {
 		this.lastModifiedBy = lastModifiedBy;
 	}
 
 	/**
-	 * Retrieves the date the template was last modified.
+	 * Retrieves the date the album was last modified.
 	 * 
-	 * @return the date the template was last modified.
+	 * @return the date the album was last modified.
 	 */
 	public Long getDateLastModified() {
 		return this.dateLastModified;
 	}
 
 	/**
-	 * Sets the date the template was last modified.
+	 * Sets the date the album was last modified.
 	 * 
 	 * @param dateLastModified
-	 *            - the date the template was last modified.
+	 *            - the date the album was last modified.
 	 */
 	public void setDateLastModified(Long dateLastModified) {
 		this.dateLastModified = dateLastModified;
