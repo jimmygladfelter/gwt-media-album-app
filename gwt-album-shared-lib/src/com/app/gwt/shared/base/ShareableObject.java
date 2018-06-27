@@ -99,7 +99,7 @@ public class ShareableObject extends BaseObject {
 	 * 
 	 * @param tag
 	 *            - a searchable attribute.
-	 * @return
+	 * @return true / false whether the tag was added or not.
 	 */
 	public boolean addTag(String tag) {
 		boolean added = false;
@@ -132,7 +132,7 @@ public class ShareableObject extends BaseObject {
 	 * 
 	 * @param tag
 	 *            - a searchable attribute.
-	 * @return
+	 * @return true / false whether the tag was removed or not.
 	 */
 	public boolean removeTag(String tag) {
 		boolean removed = false;
