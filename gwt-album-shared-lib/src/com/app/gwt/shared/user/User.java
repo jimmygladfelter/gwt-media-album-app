@@ -19,6 +19,7 @@ public class User implements Serializable {
 	protected String bio;
 	protected Long dateCreated;
 	protected String profileImageThumbnail;
+	protected boolean isAdmin;
 
 	protected User() {
 		// no-op - serializable
@@ -40,7 +41,7 @@ public class User implements Serializable {
 	 * @param dateCreated
 	 */
 	public User(String emailAddress, Long dateCreated) {
-		this(emailAddress, null, null, null, dateCreated, null);
+		this(emailAddress, null, null, null, dateCreated, null, false);
 	}
 
 	/**
@@ -54,7 +55,7 @@ public class User implements Serializable {
 	 * @param profileImageThumbnail
 	 */
 	public User(String emailAddress, String firstName, String lastName, String bio, Long dateCreated,
-			String profileImageThumbnail) {
+			String profileImageThumbnail, boolean isAdmin) {
 		super();
 		this.emailAddress = emailAddress;
 		this.firstName = firstName;
@@ -62,6 +63,7 @@ public class User implements Serializable {
 		this.bio = bio;
 		this.dateCreated = dateCreated;
 		this.profileImageThumbnail = profileImageThumbnail;
+		this.isAdmin = isAdmin;
 	}
 
 	/**
@@ -178,6 +180,27 @@ public class User implements Serializable {
 	 */
 	public void setProfileImageThumbnail(String profileImageThumbnail) {
 		this.profileImageThumbnail = profileImageThumbnail;
+	}
+
+	/**
+	 * Determines whether or not the user is an administrator of the system.
+	 * 
+	 * @return true / false whether or not the user is an administrator of the
+	 *         system.
+	 */
+	public boolean isAdmin() {
+		return this.isAdmin;
+	}
+
+	/**
+	 * Sets whether or not the user is an administrator of the system.
+	 * 
+	 * @param isAdmin
+	 *            - true / false whether or not the user is an administrator of the
+	 *            system.
+	 */
+	public void setAdmin(boolean isAdmin) {
+		this.isAdmin = isAdmin;
 	}
 
 	@Override
