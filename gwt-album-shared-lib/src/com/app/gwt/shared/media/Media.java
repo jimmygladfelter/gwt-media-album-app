@@ -14,6 +14,8 @@ public class Media extends ShareableObject {
 
 	private static final long serialVersionUID = 7624177293055464910L;
 
+	protected String thumbnail;
+
 	public Media() {
 		// no-op - serializable
 	}
@@ -38,7 +40,7 @@ public class Media extends ShareableObject {
 	 * @param dateCreated
 	 */
 	public Media(String name, String description, String createdBy, Long dateCreated) {
-		this(null, name, description, createdBy, dateCreated, createdBy, dateCreated, null);
+		this(null, name, description, createdBy, dateCreated, createdBy, dateCreated, null, null);
 	}
 
 	/**
@@ -54,7 +56,29 @@ public class Media extends ShareableObject {
 	 * @param tags
 	 */
 	public Media(Long id, String name, String description, String createdBy, Long dateCreated, String lastModifiedBy,
-			Long dateLastModified, HashSet<String> tags) {
+			Long dateLastModified, HashSet<String> tags, String thumbnail) {
 		super(id, name, description, createdBy, dateCreated, lastModifiedBy, dateLastModified, tags);
+		this.thumbnail = thumbnail;
+	}
+
+	/**
+	 * Retrieves a base64 representation of the image (thumbnail) of the media
+	 * object.
+	 * 
+	 * @return a base64 representation of the image (thumbnail) of the media object.
+	 */
+	public String getThumbnail() {
+		return this.thumbnail;
+	}
+
+	/**
+	 * Sets a base64 representation of the image (thumbnail) of the media object.
+	 * 
+	 * @param profileImageThumbnail
+	 *            - a base64 representation of the image (thumbnail) of the media
+	 *            object..
+	 */
+	public void setThumbnail(String thumbnail) {
+		this.thumbnail = thumbnail;
 	}
 }

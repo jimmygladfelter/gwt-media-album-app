@@ -18,7 +18,7 @@ public class User implements Serializable {
 	protected String lastName;
 	protected String bio;
 	protected Long dateCreated;
-	protected String profileImageThumbnail;
+	protected String thumbnail;
 	protected boolean isAdmin;
 
 	protected User() {
@@ -54,15 +54,15 @@ public class User implements Serializable {
 	 * @param dateCreated
 	 * @param profileImageThumbnail
 	 */
-	public User(String emailAddress, String firstName, String lastName, String bio, Long dateCreated,
-			String profileImageThumbnail, boolean isAdmin) {
+	public User(String emailAddress, String firstName, String lastName, String bio, Long dateCreated, String thumbnail,
+			boolean isAdmin) {
 		super();
 		this.emailAddress = emailAddress;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.bio = bio;
 		this.dateCreated = dateCreated;
-		this.profileImageThumbnail = profileImageThumbnail;
+		this.thumbnail = thumbnail;
 		this.isAdmin = isAdmin;
 	}
 
@@ -167,8 +167,8 @@ public class User implements Serializable {
 	 * 
 	 * @return a base64 representation of the profile image (thumbnail) of the user.
 	 */
-	public String getProfileImageThumbnail() {
-		return this.profileImageThumbnail;
+	public String getThumbnail() {
+		return this.thumbnail;
 	}
 
 	/**
@@ -178,8 +178,8 @@ public class User implements Serializable {
 	 *            - a base64 representation of the profile image (thumbnail) of the
 	 *            user.
 	 */
-	public void setProfileImageThumbnail(String profileImageThumbnail) {
-		this.profileImageThumbnail = profileImageThumbnail;
+	public void setThumbnail(String thumbnail) {
+		this.thumbnail = thumbnail;
 	}
 
 	/**
