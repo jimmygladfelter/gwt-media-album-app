@@ -2,16 +2,18 @@ package com.app.gwt.shared.album;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashSet;
 
-import com.app.gwt.shared.base.ShareableObject;
+import com.app.gwt.shared.base.ObjectType;
+import com.app.gwt.shared.base.StringSet;
+import com.app.gwt.shared.base.ThumbnailObject;
+import com.app.gwt.shared.comment.Comment;
 
 /**
  * Represents a scrapbook album.
  * 
  * @author James C. Gladfelter
  */
-public class ScrapbookAlbum extends ShareableObject {
+public class ScrapbookAlbum extends ThumbnailObject {
 
 	private static final long serialVersionUID = 3082862037841205346L;
 
@@ -41,7 +43,7 @@ public class ScrapbookAlbum extends ShareableObject {
 	 * @param dateCreated
 	 */
 	public ScrapbookAlbum(String name, String description, String createdBy, Long dateCreated) {
-		this(null, name, description, createdBy, dateCreated, createdBy, dateCreated, null, null);
+		this(null, name, description, createdBy, dateCreated, createdBy, dateCreated, null, null, null, null, null);
 	}
 
 	/**
@@ -54,11 +56,17 @@ public class ScrapbookAlbum extends ShareableObject {
 	 * @param dateCreated
 	 * @param lastModifiedBy
 	 * @param dateLastModified
+	 * @param likedByUsers
+	 * @param comments
 	 * @param tags
+	 * @param thumbnail
+	 * @param pages
 	 */
 	public ScrapbookAlbum(Long id, String name, String description, String createdBy, Long dateCreated,
-			String lastModifiedBy, Long dateLastModified, HashSet<String> tags, ArrayList<AlbumPage> pages) {
-		super(id, name, description, createdBy, dateCreated, lastModifiedBy, dateLastModified, tags);
+			String lastModifiedBy, Long dateLastModified, StringSet likedByUsers, ArrayList<Comment> comments,
+			StringSet tags, String thumbnail, ArrayList<AlbumPage> pages) {
+		super(id, ObjectType.SCRAPBOOK_ALBUM, name, description, createdBy, dateCreated, lastModifiedBy,
+				dateLastModified, likedByUsers, comments, tags, thumbnail);
 		this.pages = pages;
 	}
 
@@ -79,6 +87,18 @@ public class ScrapbookAlbum extends ShareableObject {
 	 */
 	public void setPages(ArrayList<AlbumPage> pages) {
 		this.pages = pages;
+	}
+
+	/**
+	 * Determines if the specified page is a part of the album.
+	 * 
+	 * @param page
+	 *            - a page to look for.
+	 * @return true / false whether or not the specified page is a part of the
+	 *         album.
+	 */
+	public boolean containsPage(AlbumPage page) {
+		return this.pages != null ? this.pages.contains(page) : false;
 	}
 
 	/**
@@ -139,7 +159,7 @@ public class ScrapbookAlbum extends ShareableObject {
 	 *            - array of pages to be removed.
 	 */
 	public void removePages(AlbumPage... pages) {
-		if (this.tags != null && pages != null) {
+		if (this.pages != null && pages != null) {
 			for (AlbumPage page : pages) {
 				this.removePage(page);
 			}

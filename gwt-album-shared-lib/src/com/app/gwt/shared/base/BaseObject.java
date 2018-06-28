@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
+import com.app.gwt.shared.user.User;
+
 /**
  * Represents the base of most objects.
  * 
@@ -14,12 +16,12 @@ public class BaseObject implements Serializable {
 	private static final long serialVersionUID = 308379500092490739L;
 
 	protected Long id;
-	protected String name;
-	protected String description;
+	protected ObjectType objectType;
 	protected String createdBy;
 	protected Long dateCreated;
 	protected String lastModifiedBy;
 	protected Long dateLastModified;
+	protected StringSet likedByUsers;
 
 	protected BaseObject() {
 		// no-op - serializable
@@ -28,48 +30,45 @@ public class BaseObject implements Serializable {
 	/**
 	 * Creates a new base object.
 	 * 
-	 * @param name
-	 * @param description
+	 * @param objectType
 	 * @param createdBy
 	 */
-	public BaseObject(String name, String description, String createdBy) {
-		this(name, description, createdBy, new Date().getTime());
+	public BaseObject(ObjectType objectType, String createdBy) {
+		this(objectType, createdBy, new Date().getTime());
 	}
 
 	/**
 	 * Creates a new base object.
 	 * 
-	 * @param name
-	 * @param description
+	 * @param objectType
 	 * @param createdBy
 	 * @param dateCreated
 	 */
-	public BaseObject(String name, String description, String createdBy, Long dateCreated) {
-		this(null, name, description, createdBy, dateCreated, createdBy, dateCreated);
+	public BaseObject(ObjectType objectType, String createdBy, Long dateCreated) {
+		this(null, objectType, createdBy, dateCreated, createdBy, dateCreated, null);
 	}
 
 	/**
 	 * Creates a new base object.
 	 * 
 	 * @param id
-	 * @param name
-	 * @param description
+	 * @param objectType
 	 * @param createdBy
 	 * @param dateCreated
 	 * @param lastModifiedBy
 	 * @param dateLastModified
-	 * @param tags
+	 * @param likedByUsers
 	 */
-	public BaseObject(Long id, String name, String description, String createdBy, Long dateCreated,
-			String lastModifiedBy, Long dateLastModified) {
+	public BaseObject(Long id, ObjectType objectType, String createdBy, Long dateCreated, String lastModifiedBy,
+			Long dateLastModified, StringSet likedByUsers) {
 		super();
 		this.id = id;
-		this.name = name;
-		this.description = description;
+		this.objectType = objectType;
 		this.createdBy = createdBy;
 		this.dateCreated = dateCreated;
 		this.lastModifiedBy = lastModifiedBy;
 		this.dateLastModified = dateLastModified;
+		this.likedByUsers = likedByUsers;
 	}
 
 	/**
@@ -101,41 +100,63 @@ public class BaseObject implements Serializable {
 	}
 
 	/**
-	 * Retrieves the name of the object.
+	 * Retrieves the type of the object.
 	 * 
-	 * @return the name of the object.
+	 * @return - the type of the object.
 	 */
-	public String getName() {
-		return this.name;
+	public ObjectType getObjectType() {
+		return this.objectType;
 	}
 
 	/**
-	 * Sets the name of the object.
+	 * Sets the type of the object.
 	 * 
-	 * @param name
-	 *            - the name of the object.
+	 * @param objectType
+	 *            - the type of object.
 	 */
-	public void setName(String name) {
-		this.name = name;
+	public void setObjectType(ObjectType objectType) {
+		this.objectType = objectType;
 	}
 
 	/**
-	 * Retrieves the description given to the object.
+	 * Determines if the specified user is the owner of this object or not.
 	 * 
-	 * @return the description of the object.
+	 * @param user
+	 *            - a user.
+	 * @return true / false whether or not the specified user is the owner of this
+	 *         object or not.
 	 */
-	public String getDescription() {
-		return this.description;
+	public boolean isOwner(User user) {
+		String emailAddressOfUser = user != null ? user.getEmailAddress() : null;
+		return emailAddressOfUser != null && this.createdBy != null ? Objects.equals(emailAddressOfUser, this.createdBy)
+				: false;
 	}
 
 	/**
-	 * Sets the description of the object.
+	 * Determines if the specified user can edit this object. By default, only an
+	 * admin user or the user who created the object can edit or delete it.
 	 * 
-	 * @param description
-	 *            - a description given to the object.
+	 * @param user
+	 *            - a user.
+	 * @return true / false whether or not the specified user can edit this object.
 	 */
-	public void setDescription(String description) {
-		this.description = description;
+	public boolean isEditable(User user) {
+		boolean isUserAdmin = user != null ? user.isAdmin() : false;
+		return isUserAdmin || this.isOwner(user);
+	}
+
+	/**
+	 * Determines if the specified user can delete this object. By default, only an
+	 * admin user or the user who created the object can edit or delete it.
+	 * 
+	 * @param user
+	 *            - a user.
+	 * @return true / false whether or not the specified user can delete this
+	 *         object.
+	 */
+	public boolean isDeleteable(User user) {
+		boolean isUserAdmin = user != null ? user.isAdmin() : false;
+		return isUserAdmin || this.isOwner(user);
 	}
 
 	/**
@@ -214,6 +235,25 @@ public class BaseObject implements Serializable {
 		this.dateLastModified = dateLastModified;
 	}
 
+	/**
+	 * Retrieves the users that have 'liked' this object.
+	 * 
+	 * @return the users that have 'liked' this object.
+	 */
+	public StringSet getLikedByUser() {
+		return this.likedByUsers;
+	}
+
+	/**
+	 * Sets the users that have 'liked' this object.
+	 * 
+	 * @param tags
+	 *            - the users that have 'liked' this object.
+	 */
+	public void setLikedByUsers(StringSet likedByUsers) {
+		this.likedByUsers = likedByUsers;
+	}
+
 	@Override
 	public boolean equals(Object obj) {
 		boolean eq = false;
@@ -223,7 +263,11 @@ public class BaseObject implements Serializable {
 			if (this.id == null && id2 == null) {
 				eq = super.equals(obj2);
 			} else {
-				eq = Objects.equals(this.id, id2);
+				// to be equal, the type must be the same as well as the ID.
+				eq = Objects.equals(this.objectType, obj2.objectType);
+				if (eq) {
+					eq = Objects.equals(this.id, id2);
+				}
 			}
 		}
 		return eq;

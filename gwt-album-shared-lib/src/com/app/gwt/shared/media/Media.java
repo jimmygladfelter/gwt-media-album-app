@@ -1,22 +1,23 @@
 package com.app.gwt.shared.media;
 
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashSet;
 
-import com.app.gwt.shared.base.ShareableObject;
+import com.app.gwt.shared.base.ObjectType;
+import com.app.gwt.shared.base.StringSet;
+import com.app.gwt.shared.base.ThumbnailObject;
+import com.app.gwt.shared.comment.Comment;
 
 /**
  * Represents the base class for all media related objects.
  * 
  * @author James C. Gladfelter
  */
-public class Media extends ShareableObject {
+public class Media extends ThumbnailObject {
 
 	private static final long serialVersionUID = 7624177293055464910L;
 
-	protected String thumbnail;
-
-	public Media() {
+	protected Media() {
 		// no-op - serializable
 	}
 
@@ -40,7 +41,7 @@ public class Media extends ShareableObject {
 	 * @param dateCreated
 	 */
 	public Media(String name, String description, String createdBy, Long dateCreated) {
-		this(null, name, description, createdBy, dateCreated, createdBy, dateCreated, null, null);
+		this(null, name, description, createdBy, dateCreated, createdBy, dateCreated, null, null, null, null);
 	}
 
 	/**
@@ -53,32 +54,15 @@ public class Media extends ShareableObject {
 	 * @param dateCreated
 	 * @param lastModifiedBy
 	 * @param dateLastModified
+	 * @param likedByUsers
+	 * @param comments
 	 * @param tags
+	 * @param thumbnail
 	 */
 	public Media(Long id, String name, String description, String createdBy, Long dateCreated, String lastModifiedBy,
-			Long dateLastModified, HashSet<String> tags, String thumbnail) {
-		super(id, name, description, createdBy, dateCreated, lastModifiedBy, dateLastModified, tags);
-		this.thumbnail = thumbnail;
-	}
-
-	/**
-	 * Retrieves a base64 representation of the image (thumbnail) of the media
-	 * object.
-	 * 
-	 * @return a base64 representation of the image (thumbnail) of the media object.
-	 */
-	public String getThumbnail() {
-		return this.thumbnail;
-	}
-
-	/**
-	 * Sets a base64 representation of the image (thumbnail) of the media object.
-	 * 
-	 * @param profileImageThumbnail
-	 *            - a base64 representation of the image (thumbnail) of the media
-	 *            object..
-	 */
-	public void setThumbnail(String thumbnail) {
-		this.thumbnail = thumbnail;
+			Long dateLastModified, StringSet likedByUsers, ArrayList<Comment> comments, StringSet tags,
+			String thumbnail) {
+		super(id, ObjectType.MEDIA, name, description, createdBy, dateCreated, lastModifiedBy, dateLastModified,
+				likedByUsers, comments, tags, thumbnail);
 	}
 }
