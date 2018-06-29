@@ -117,7 +117,7 @@ public abstract class Media extends ThumbnailObject {
 	 * @return the type of media.
 	 */
 	public MediaType getMediaType() {
-		return this.mediaType; 
+		return this.mediaType;
 	}
 
 	/**
