@@ -73,6 +73,6 @@ public class VideoMedia extends Media {
 	 * @return the video extension type of the media.
 	 */
 	public VideoExtensionType getVideoExtensionType() {
-		return VideoExtensionType.toEnum(this.getExtension());
+		return VideoExtensionType.toVideoExtensionType(this.getExtension());
 	}
 }

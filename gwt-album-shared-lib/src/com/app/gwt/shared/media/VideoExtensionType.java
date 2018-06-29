@@ -53,7 +53,7 @@ public enum VideoExtensionType implements Serializable {
 	 * @param text
 	 * @return
 	 */
-	public static VideoExtensionType toEnum(String text) {
+	public static VideoExtensionType toVideoExtensionType(String text) {
 		String textTrimmedLowercase = text != null ? text.trim().toLowerCase() : null;
 		return ENUM_BY_TEXT_MAP.get(textTrimmedLowercase);
 	}

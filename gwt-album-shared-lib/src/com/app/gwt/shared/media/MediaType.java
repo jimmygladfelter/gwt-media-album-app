@@ -53,7 +53,7 @@ public enum MediaType implements Serializable {
 	 * @param text
 	 * @return
 	 */
-	public static MediaType toEnum(String text) {
+	public static MediaType toMediaType(String text) {
 		String textTrimmedLowercase = text != null ? text.trim().toLowerCase() : null;
 		return ENUM_BY_TEXT_MAP.get(textTrimmedLowercase);
 	}

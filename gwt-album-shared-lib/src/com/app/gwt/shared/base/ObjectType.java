@@ -54,7 +54,7 @@ public enum ObjectType implements Serializable {
 	 * @param text
 	 * @return
 	 */
-	public static ObjectType toEnum(String text) {
+	public static ObjectType toObjectType(String text) {
 		String textTrimmedLowercase = text != null ? text.trim().toLowerCase() : null;
 		return ENUM_BY_TEXT_MAP.get(textTrimmedLowercase);
 	}

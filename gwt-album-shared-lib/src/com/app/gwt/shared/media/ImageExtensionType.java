@@ -53,7 +53,7 @@ public enum ImageExtensionType implements Serializable {
 	 * @param text
 	 * @return
 	 */
-	public static ImageExtensionType toEnum(String text) {
+	public static ImageExtensionType toImageExtensionType(String text) {
 		String textTrimmedLowercase = text != null ? text.trim().toLowerCase() : null;
 		return ENUM_BY_TEXT_MAP.get(textTrimmedLowercase);
 	}

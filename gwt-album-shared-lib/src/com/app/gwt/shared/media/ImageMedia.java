@@ -73,6 +73,6 @@ public class ImageMedia extends Media {
 	 * @return the image extension type of the media.
 	 */
 	public ImageExtensionType getImageExtensionType() {
-		return ImageExtensionType.toEnum(this.getExtension());
+		return ImageExtensionType.toImageExtensionType(this.getExtension());
 	}
 }
