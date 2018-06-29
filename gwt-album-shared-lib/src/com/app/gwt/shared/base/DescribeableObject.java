@@ -7,7 +7,7 @@ import java.util.Date;
  * 
  * @author James C. Gladfelter
  */
-public class DescribeableObject extends BaseObject {
+public class DescribeableObject extends LikeableBaseObject {
 
 	private static final long serialVersionUID = 8840903972778981723L;
 

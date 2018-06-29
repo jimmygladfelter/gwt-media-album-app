@@ -2,7 +2,7 @@ package com.app.gwt.shared.comment;
 
 import java.util.Date;
 
-import com.app.gwt.shared.base.BaseObject;
+import com.app.gwt.shared.base.LikeableBaseObject;
 import com.app.gwt.shared.base.ObjectType;
 import com.app.gwt.shared.base.StringSet;
 
@@ -11,7 +11,7 @@ import com.app.gwt.shared.base.StringSet;
  * 
  * @author James C. Gladfelter
  */
-public class Comment extends BaseObject {
+public class Comment extends LikeableBaseObject {
 
 	private static final long serialVersionUID = -4236102662504819523L;
 

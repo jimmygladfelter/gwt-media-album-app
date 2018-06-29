@@ -1,41 +1,40 @@
-package com.app.gwt.shared.base;
+package com.app.gwt.shared.style;
 
 import java.io.Serializable;
 import java.util.HashMap;
 
 /**
- * Represents a type of object in the app.
+ * Represents a type of image size.
  * 
  * @author James C. Gladfelter
  */
-public enum ObjectType implements Serializable {
+public enum ImageSizeType implements Serializable {
 
-	ALBUM_PAGE("AlbumPage"), ALBUM_PAGE_ENTRY("AlbumPageEntry"), SCRAPBOOK_ALBUM("ScrapbookAlbum"), MEDIA(
-			"Media"), PAGE_TEMPLATE("PageTemplate"), COMMENT("Comment");
+	CONTAIN("contain"), COVER("cover");
 
 	protected String text;
 
-	protected static HashMap<String, ObjectType> ENUM_BY_TEXT_MAP;
+	protected static HashMap<String, ImageSizeType> ENUM_BY_TEXT_MAP;
 
 	/**
-	 * Creates a new object type.
+	 * Creates a new image size type.
 	 * 
 	 * @param text
 	 */
-	private ObjectType(String text) {
+	private ImageSizeType(String text) {
 		this.text = text;
 		this.registerEnum(this);
 	}
 
 	/**
-	 * Adds the object type to the static enum by text map so that {@link toEnum()}
-	 * method can be called faster.
+	 * Adds the image size type to the static enum by text map so that
+	 * {@link toEnum()} method can be called faster.
 	 * 
 	 * @param type
 	 */
-	protected void registerEnum(ObjectType type) {
+	protected void registerEnum(ImageSizeType type) {
 		if (ENUM_BY_TEXT_MAP == null) {
-			ENUM_BY_TEXT_MAP = new HashMap<String, ObjectType>();
+			ENUM_BY_TEXT_MAP = new HashMap<String, ImageSizeType>();
 		}
 		String typeString = type != null ? type.text : null;
 		if (typeString != null) {
@@ -54,7 +53,7 @@ public enum ObjectType implements Serializable {
 	 * @param text
 	 * @return
 	 */
-	public static ObjectType toObjectType(String text) {
+	public static ImageSizeType toImageSizeType(String text) {
 		String textTrimmedLowercase = text != null ? text.trim().toLowerCase() : null;
 		return ENUM_BY_TEXT_MAP.get(textTrimmedLowercase);
 	}

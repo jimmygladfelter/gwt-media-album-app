@@ -21,7 +21,6 @@ public class BaseObject implements Serializable {
 	protected Long dateCreated;
 	protected String lastModifiedBy;
 	protected Long dateLastModified;
-	protected StringSet likedByUsers;
 
 	protected BaseObject() {
 		// no-op - serializable
@@ -45,7 +44,7 @@ public class BaseObject implements Serializable {
 	 * @param dateCreated
 	 */
 	public BaseObject(ObjectType objectType, String createdBy, Long dateCreated) {
-		this(null, objectType, createdBy, dateCreated, createdBy, dateCreated, null);
+		this(null, objectType, createdBy, dateCreated, createdBy, dateCreated);
 	}
 
 	/**
@@ -60,7 +59,7 @@ public class BaseObject implements Serializable {
 	 * @param likedByUsers
 	 */
 	public BaseObject(Long id, ObjectType objectType, String createdBy, Long dateCreated, String lastModifiedBy,
-			Long dateLastModified, StringSet likedByUsers) {
+			Long dateLastModified) {
 		super();
 		this.id = id;
 		this.objectType = objectType;
@@ -68,7 +67,6 @@ public class BaseObject implements Serializable {
 		this.dateCreated = dateCreated;
 		this.lastModifiedBy = lastModifiedBy;
 		this.dateLastModified = dateLastModified;
-		this.likedByUsers = likedByUsers;
 	}
 
 	/**
@@ -233,25 +231,6 @@ public class BaseObject implements Serializable {
 	 */
 	public void setDateLastModified(Long dateLastModified) {
 		this.dateLastModified = dateLastModified;
-	}
-
-	/**
-	 * Retrieves the users that have 'liked' this object.
-	 * 
-	 * @return the users that have 'liked' this object.
-	 */
-	public StringSet getLikedByUser() {
-		return this.likedByUsers;
-	}
-
-	/**
-	 * Sets the users that have 'liked' this object.
-	 * 
-	 * @param tags
-	 *            - the users that have 'liked' this object.
-	 */
-	public void setLikedByUsers(StringSet likedByUsers) {
-		this.likedByUsers = likedByUsers;
 	}
 
 	@Override
