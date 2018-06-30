@@ -49,6 +49,24 @@ public class AlbumPageTemplate extends AlbumPage {
 	}
 
 	/**
+	 * Creates a new page template from an album page.
+	 * 
+	 * @param page
+	 * @param templatedEntryIds
+	 * @param createdBy
+	 * @param tags
+	 * @param thumbnail
+	 */
+	public AlbumPageTemplate(AlbumPage page, LongSet templatedEntryIds, String createdBy, StringSet tags,
+			String thumbnail) {
+		this(null, page.getName(), page.getDescription(), createdBy, null, createdBy, null, null, null, tags, thumbnail,
+				page.getBackgroundStyle(), templatedEntryIds);
+		Long dateCreated = new Date().getTime();
+		this.dateCreated = dateCreated;
+		this.dateLastModified = dateCreated;
+	}
+
+	/**
 	 * Creates a new page template.
 	 * 
 	 * @param id

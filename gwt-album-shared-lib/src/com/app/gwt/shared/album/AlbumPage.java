@@ -3,11 +3,13 @@ package com.app.gwt.shared.album;
 import java.util.ArrayList;
 import java.util.Date;
 
+import com.app.gwt.shared.base.LongSet;
 import com.app.gwt.shared.base.ObjectType;
 import com.app.gwt.shared.base.StringSet;
 import com.app.gwt.shared.base.ThumbnailObject;
 import com.app.gwt.shared.comment.Comment;
 import com.app.gwt.shared.style.BackgroundStyle;
+import com.app.gwt.shared.template.AlbumPageTemplate;
 
 /**
  * Represents a page in an album.
@@ -87,5 +89,25 @@ public class AlbumPage extends ThumbnailObject {
 	 */
 	public void setBackgroundStyle(BackgroundStyle backgroundStyle) {
 		this.backgroundStyle = backgroundStyle;
+	}
+
+	/**
+	 * Creates an album page template from this page.
+	 * 
+	 * @param templatedEntryIds
+	 *            - a set of "templated" album page entries where the entry's media
+	 *            is non-static (defined by the user when imported into an album).
+	 * @param createdBy
+	 *            - the user who created the template.
+	 * @param tags
+	 *            - a set of tags associated with the new page template.
+	 * @param thumbnail
+	 *            - a base64 representation of the image (thumbnail) of the album
+	 *            page template.
+	 * @return an album page template from this page.
+	 */
+	public AlbumPageTemplate createTemplate(LongSet templatedEntryIds, String createdBy, StringSet tags,
+			String thumbnail) {
+		return new AlbumPageTemplate(this, templatedEntryIds, createdBy, tags, thumbnail);
 	}
 }
