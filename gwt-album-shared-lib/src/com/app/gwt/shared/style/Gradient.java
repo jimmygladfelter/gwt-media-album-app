@@ -20,6 +20,29 @@ public class Gradient implements Serializable {
 	}
 
 	/**
+	 * Copies a {@link Gradient}
+	 * 
+	 * @param toCopy
+	 *            - the {@link Gradient} to copy.
+	 */
+	public Gradient(Gradient toCopy) {
+		super();
+		if (toCopy != null) {
+			// deep copy the array of steps.
+			ArrayList<GradientStep> stepsToCopy = toCopy.getSteps();
+			if (stepsToCopy != null) {
+				this.steps = new ArrayList<GradientStep>();
+				for (GradientStep stepToCopy : stepsToCopy) {
+					if (stepToCopy != null) {
+						this.steps.add(new GradientStep(stepToCopy));
+					}
+				}
+			}
+			this.positionType = toCopy.positionType;
+		}
+	}
+
+	/**
 	 * Creates a new gradient.
 	 * 
 	 * @param steps

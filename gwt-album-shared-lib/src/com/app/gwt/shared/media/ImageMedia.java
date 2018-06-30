@@ -45,6 +45,16 @@ public class ImageMedia extends Media {
 	}
 
 	/**
+	 * Copies a {@link ImageMedia}
+	 * 
+	 * @param toCopy
+	 *            - the {@link ImageMedia} to copy.
+	 */
+	public ImageMedia(ImageMedia toCopy) {
+		super(toCopy);
+	}
+
+	/**
 	 * Creates a new image media object.
 	 * 
 	 * @param id

@@ -48,6 +48,24 @@ public class BaseObject implements Serializable {
 	}
 
 	/**
+	 * Copies a {@link BaseObject}
+	 * 
+	 * @param toCopy
+	 *            - the {@link BaseObject} to copy.
+	 */
+	public BaseObject(BaseObject toCopy) {
+		super();
+		if (toCopy != null) {
+			this.id = toCopy.id;
+			this.objectType = toCopy.objectType;
+			this.createdBy = toCopy.createdBy;
+			this.dateCreated = toCopy.dateCreated;
+			this.lastModifiedBy = toCopy.lastModifiedBy;
+			this.dateLastModified = toCopy.dateLastModified;
+		}
+	}
+
+	/**
 	 * Creates a new base object.
 	 * 
 	 * @param id

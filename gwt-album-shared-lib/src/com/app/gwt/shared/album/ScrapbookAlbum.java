@@ -47,6 +47,28 @@ public class ScrapbookAlbum extends ThumbnailObject {
 	}
 
 	/**
+	 * Copies a {@link ScrapbookAlbum}
+	 * 
+	 * @param toCopy
+	 *            - the {@link ScrapbookAlbum} to copy.
+	 */
+	public ScrapbookAlbum(ScrapbookAlbum toCopy) {
+		super(toCopy);
+		if (toCopy != null) {
+			// deep copy the array of pages.
+			ArrayList<AlbumPage> pagesToCopy = toCopy.getPages();
+			if (pagesToCopy != null) {
+				this.pages = new ArrayList<AlbumPage>();
+				for (AlbumPage pageToCopy : pagesToCopy) {
+					if (pageToCopy != null) {
+						this.pages.add(new AlbumPage(pageToCopy));
+					}
+				}
+			}
+		}
+	}
+
+	/**
 	 * Creates a new album.
 	 * 
 	 * @param id

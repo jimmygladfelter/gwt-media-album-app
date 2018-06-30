@@ -45,6 +45,20 @@ public class DescribeableObject extends LikeableBaseObject {
 	}
 
 	/**
+	 * Copies a {@link DescribeableObject}
+	 * 
+	 * @param toCopy
+	 *            - the {@link DescribeableObject} to copy.
+	 */
+	public DescribeableObject(DescribeableObject toCopy) {
+		super(toCopy);
+		if (toCopy != null) {
+			this.name = toCopy.name;
+			this.description = toCopy.description;
+		}
+	}
+
+	/**
 	 * Creates a new describeable object.
 	 * 
 	 * @param id

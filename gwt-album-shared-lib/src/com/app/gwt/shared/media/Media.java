@@ -36,6 +36,20 @@ public abstract class Media extends ThumbnailObject {
 	}
 
 	/**
+	 * Copies a {@link Media}
+	 * 
+	 * @param toCopy
+	 *            - the {@link Media} to copy.
+	 */
+	public Media(Media toCopy) {
+		super(toCopy);
+		if (toCopy != null) {
+			this.filename = toCopy.filename;
+			this.mediaType = toCopy.mediaType;
+		}
+	}
+
+	/**
 	 * Creates a new media object.
 	 * 
 	 * @param name

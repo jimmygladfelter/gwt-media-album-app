@@ -24,6 +24,19 @@ public class StringSet implements Serializable, Iterable<String> {
 	}
 
 	/**
+	 * Copies a {@link StringSet}
+	 * 
+	 * @param toCopy
+	 *            - the {@link StringSet} to copy.
+	 */
+	public StringSet(StringSet toCopy) {
+		super();
+		if (toCopy != null) {
+			this.setStrings(toCopy.strings);
+		}
+	}
+
+	/**
 	 * Creates a new string set.
 	 * 
 	 * @param strings

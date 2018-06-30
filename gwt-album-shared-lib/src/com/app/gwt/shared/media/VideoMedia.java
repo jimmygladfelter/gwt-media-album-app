@@ -45,6 +45,16 @@ public class VideoMedia extends Media {
 	}
 
 	/**
+	 * Copies a {@link VideoMedia}
+	 * 
+	 * @param toCopy
+	 *            - the {@link VideoMedia} to copy.
+	 */
+	public VideoMedia(VideoMedia toCopy) {
+		super(toCopy);
+	}
+
+	/**
 	 * Creates a new video media object.
 	 * 
 	 * @param id

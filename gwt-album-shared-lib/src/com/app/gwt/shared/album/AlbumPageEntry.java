@@ -48,6 +48,24 @@ public class AlbumPageEntry extends BaseObject {
 	}
 
 	/**
+	 * Copies a {@link AlbumPageEntry}
+	 * 
+	 * @param toCopy
+	 *            - the {@link AlbumPageEntry} to copy.
+	 */
+	public AlbumPageEntry(AlbumPageEntry toCopy) {
+		super(toCopy);
+		if (toCopy != null) {
+			this.x = toCopy.x;
+			this.y = toCopy.y;
+			this.width = toCopy.width;
+			this.height = toCopy.height;
+			this.text = toCopy.text;
+			this.entryStyle = toCopy.entryStyle != null ? new EntryStyle(toCopy.entryStyle) : null;
+		}
+	}
+
+	/**
 	 * Creates a new album page entry.
 	 * 
 	 * @param id

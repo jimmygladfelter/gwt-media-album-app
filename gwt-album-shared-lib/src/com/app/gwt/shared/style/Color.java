@@ -22,6 +22,23 @@ public class Color implements Serializable {
 	}
 
 	/**
+	 * Copies a {@link Color}
+	 * 
+	 * @param toCopy
+	 *            - the {@link Color} to copy.
+	 */
+	public Color(Color toCopy) {
+		super();
+		if (toCopy == null) {
+			toCopy = transparent();
+		}
+		this.r = toCopy.r;
+		this.g = toCopy.g;
+		this.b = toCopy.b;
+		this.a = toCopy.a;
+	}
+
+	/**
 	 * Creates a new color.
 	 * 
 	 * @param r

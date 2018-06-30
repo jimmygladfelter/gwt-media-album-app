@@ -36,6 +36,24 @@ public class TextStyle extends EntryStyle {
 	}
 
 	/**
+	 * Copies a {@link TextStyle}
+	 * 
+	 * @param toCopy
+	 *            - the {@link TextStyle} to copy.
+	 */
+	public TextStyle(TextStyle toCopy) {
+		super();
+		if (toCopy != null) {
+			this.bold = toCopy.bold;
+			this.underline = toCopy.underline;
+			this.italic = toCopy.italic;
+			this.fontFamily = toCopy.fontFamily;
+			this.horizontalAlignmentType = toCopy.horizontalAlignmentType;
+			this.verticalAlignmentType = toCopy.verticalAlignmentType;
+		}
+	}
+
+	/**
 	 * Creates a new text style.
 	 * 
 	 * @param bold

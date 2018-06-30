@@ -47,6 +47,19 @@ public class ThumbnailObject extends CommentableObject {
 	}
 
 	/**
+	 * Copies a {@link ThumbnailObject}
+	 * 
+	 * @param toCopy
+	 *            - the {@link ThumbnailObject} to copy.
+	 */
+	public ThumbnailObject(ThumbnailObject toCopy) {
+		super(toCopy);
+		if (toCopy != null) {
+			this.thumbnail = toCopy.thumbnail;
+		}
+	}
+
+	/**
 	 * Creates a new thumbnail object.
 	 * 
 	 * @param id

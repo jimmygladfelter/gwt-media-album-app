@@ -20,6 +20,7 @@ public class AlbumPage extends ThumbnailObject {
 
 	private static final long serialVersionUID = 8501362466937573883L;
 
+	protected ArrayList<AlbumPageEntry> entries;
 	protected BackgroundStyle backgroundStyle;
 
 	protected AlbumPage() {
@@ -46,7 +47,31 @@ public class AlbumPage extends ThumbnailObject {
 	 * @param dateCreated
 	 */
 	public AlbumPage(String name, String description, String createdBy, Long dateCreated) {
-		this(null, name, description, createdBy, dateCreated, createdBy, dateCreated, null, null, null, null, null);
+		this(null, name, description, createdBy, dateCreated, createdBy, dateCreated, null, null, null, null, null,
+				null);
+	}
+
+	/**
+	 * Copies a {@link AlbumPage}
+	 * 
+	 * @param toCopy
+	 *            - the {@link AlbumPage} to copy.
+	 */
+	public AlbumPage(AlbumPage toCopy) {
+		super(toCopy);
+		if (toCopy != null) {
+			// deep copy the array of entries.
+			ArrayList<AlbumPageEntry> entriesToCopy = toCopy.getEntries();
+			if (entriesToCopy != null) {
+				this.entries = new ArrayList<AlbumPageEntry>();
+				for (AlbumPageEntry entryToCopy : entriesToCopy) {
+					if (entryToCopy != null) {
+						this.entries.add(new AlbumPageEntry(entryToCopy));
+					}
+				}
+			}
+			this.backgroundStyle = toCopy.backgroundStyle != null ? new BackgroundStyle(toCopy.backgroundStyle) : null;
+		}
 	}
 
 	/**
@@ -66,10 +91,11 @@ public class AlbumPage extends ThumbnailObject {
 	 */
 	public AlbumPage(Long id, String name, String description, String createdBy, Long dateCreated,
 			String lastModifiedBy, Long dateLastModified, StringSet likedByUsers, ArrayList<Comment> comments,
-			StringSet tags, String thumbnail, BackgroundStyle backgroundStyle) {
+			StringSet tags, String thumbnail, BackgroundStyle backgroundStyle, ArrayList<AlbumPageEntry> entries) {
 		super(id, ObjectType.ALBUM_PAGE, name, description, createdBy, dateCreated, lastModifiedBy, dateLastModified,
 				likedByUsers, comments, tags, thumbnail);
 		this.backgroundStyle = backgroundStyle;
+		this.entries = entries;
 	}
 
 	/**
@@ -89,6 +115,102 @@ public class AlbumPage extends ThumbnailObject {
 	 */
 	public void setBackgroundStyle(BackgroundStyle backgroundStyle) {
 		this.backgroundStyle = backgroundStyle;
+	}
+
+	/**
+	 * Retrieves the entries of the page.
+	 * 
+	 * @return the entries of the page.
+	 */
+	public ArrayList<AlbumPageEntry> getEntries() {
+		return this.entries;
+	}
+
+	/**
+	 * Sets the entries within the page.
+	 * 
+	 * @param entries
+	 *            - the entries within the page.
+	 */
+	public void setEntries(ArrayList<AlbumPageEntry> entries) {
+		this.entries = entries;
+	}
+
+	/**
+	 * Determines if the specified entry is a part of the page.
+	 * 
+	 * @param entry
+	 *            - an entry to look for.
+	 * @return true / false whether or not the specified entry is a part of the
+	 *         page.
+	 */
+	public boolean containsEntry(AlbumPageEntry entry) {
+		return this.entries != null ? this.entries.contains(entry) : false;
+	}
+
+	/**
+	 * Adds an entry to the page.
+	 * 
+	 * @param entry
+	 *            - an entry to be added.
+	 * @return true / false whether the entry was added or not.
+	 */
+	public boolean addEntry(AlbumPageEntry entry) {
+		boolean added = false;
+		if (entry != null) {
+			if (this.entries == null) {
+				this.entries = new ArrayList<AlbumPageEntry>();
+			} else {
+				// try to remove it first if in case it was already been added to the page.
+				this.removeEntry(entry);
+			}
+			added = this.entries.add(entry);
+		}
+		return added;
+	}
+
+	/**
+	 * Adds an array of entries to the album.
+	 * 
+	 * @param tags
+	 *            - array of entries to be added.
+	 */
+	public void addEntries(AlbumPageEntry... entries) {
+		if (entries != null) {
+			for (AlbumPageEntry entry : entries) {
+				this.addEntry(entry);
+			}
+		}
+	}
+
+	/**
+	 * 
+	 * Removes a entry from the page.
+	 * 
+	 * @param entry
+	 *            - an entry to be removed.
+	 * @return true / false whether the entry was removed or not.
+	 */
+	public boolean removeEntry(AlbumPageEntry entry) {
+		boolean removed = false;
+		if (this.entries != null && entry != null) {
+			removed = this.entries.remove(entry);
+		}
+		return removed;
+	}
+
+	/**
+	 * Removes an array of entries from the page.
+	 * 
+	 * @param entries
+	 *            - array of entries to be removed.
+	 */
+	public void removeEntries(AlbumPageEntry... entries) {
+		if (this.entries != null && entries != null) {
+			for (AlbumPageEntry entry : entries) {
+				this.removeEntry(entry);
+			}
+		}
 	}
 
 	/**

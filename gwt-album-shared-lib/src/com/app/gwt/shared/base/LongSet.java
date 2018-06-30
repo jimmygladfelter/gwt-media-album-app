@@ -24,6 +24,19 @@ public class LongSet implements Serializable, Iterable<Long> {
 	}
 
 	/**
+	 * Copies a {@link LongSet}
+	 * 
+	 * @param toCopy
+	 *            - the {@link LongSet} to copy.
+	 */
+	public LongSet(LongSet toCopy) {
+		super();
+		if (toCopy != null) {
+			this.setLongs(toCopy.longs);
+		}
+	}
+
+	/**
 	 * Creates a new Long Integer set.
 	 * 
 	 * @param Longs

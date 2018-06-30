@@ -45,6 +45,25 @@ public class User implements Serializable {
 	}
 
 	/**
+	 * Copies a {@link User}
+	 * 
+	 * @param toCopy
+	 *            - the {@link User} to copy.
+	 */
+	public User(User toCopy) {
+		super();
+		if (toCopy != null) {
+			this.emailAddress = toCopy.emailAddress;
+			this.firstName = toCopy.firstName;
+			this.lastName = toCopy.lastName;
+			this.bio = toCopy.bio;
+			this.dateCreated = toCopy.dateCreated;
+			this.thumbnail = toCopy.thumbnail;
+			this.isAdmin = toCopy.isAdmin;
+		}
+	}
+
+	/**
 	 * Creates a new user.
 	 * 
 	 * @param emailAddress

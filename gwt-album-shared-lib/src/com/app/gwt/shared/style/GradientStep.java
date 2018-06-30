@@ -20,6 +20,20 @@ public class GradientStep implements Serializable {
 	}
 
 	/**
+	 * Copies a {@link GradientStep}
+	 * 
+	 * @param toCopy
+	 *            - the {@link GradientStep} to copy.
+	 */
+	public GradientStep(GradientStep toCopy) {
+		super();
+		if (toCopy != null) {
+			this.color = toCopy.color != null ? new Color(toCopy.color) : null;
+			this.percentage = toCopy.percentage;
+		}
+	}
+
+	/**
 	 * Creates a new gradient step.
 	 * 
 	 * @param color
@@ -67,6 +81,11 @@ public class GradientStep implements Serializable {
 	 */
 	public void setPercentage(int percentage) {
 		this.percentage = percentage;
+		if (this.percentage < 0) {
+			this.percentage = 0;
+		} else if (this.percentage > 100) {
+			this.percentage = 100;
+		}
 	}
 
 	@Override

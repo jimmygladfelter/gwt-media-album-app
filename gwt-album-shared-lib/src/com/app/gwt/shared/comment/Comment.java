@@ -51,6 +51,21 @@ public class Comment extends LikeableBaseObject {
 	}
 
 	/**
+	 * Copies a {@link Comment}
+	 * 
+	 * @param toCopy
+	 *            - the {@link Comment} to copy.
+	 */
+	public Comment(Comment toCopy) {
+		super(toCopy);
+		if (toCopy != null) {
+			this.commentedObjectId = toCopy.commentedObjectId;
+			this.commentedObjectType = toCopy.commentedObjectType;
+			this.comment = toCopy.comment;
+		}
+	}
+
+	/**
 	 * Creates a new comment.
 	 * 
 	 * @param id

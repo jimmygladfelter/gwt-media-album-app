@@ -21,6 +21,22 @@ public class MediaThumbnailStyle implements Serializable {
 	}
 
 	/**
+	 * Copies a {@link MediaThumbnailStyle}
+	 * 
+	 * @param toCopy
+	 *            - the {@link MediaThumbnailStyle} to copy.
+	 */
+	public MediaThumbnailStyle(MediaThumbnailStyle toCopy) {
+		super();
+		if (toCopy != null) {
+			this.mediaId = toCopy.mediaId;
+			this.sizeType = toCopy.sizeType;
+			this.repeatType = toCopy.repeatType;
+			this.thumbnail = toCopy.thumbnail;
+		}
+	}
+
+	/**
 	 * Creates a new media thumbnail style.
 	 * 
 	 * @param mediaId

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import com.app.gwt.shared.album.AlbumPage;
+import com.app.gwt.shared.album.AlbumPageEntry;
 import com.app.gwt.shared.base.LongSet;
 import com.app.gwt.shared.base.StringSet;
 import com.app.gwt.shared.comment.Comment;
@@ -45,7 +46,20 @@ public class AlbumPageTemplate extends AlbumPage {
 	 */
 	public AlbumPageTemplate(String name, String description, String createdBy, Long dateCreated) {
 		this(null, name, description, createdBy, dateCreated, createdBy, dateCreated, null, null, null, null, null,
-				null);
+				null, null);
+	}
+
+	/**
+	 * Copies a {@link AlbumPageTemplate}
+	 * 
+	 * @param toCopy
+	 *            - the {@link AlbumPageTemplate} to copy.
+	 */
+	public AlbumPageTemplate(AlbumPageTemplate toCopy) {
+		super(toCopy);
+		if (toCopy != null) {
+			this.templatedEntryIds = toCopy.templatedEntryIds != null ? new LongSet(toCopy.templatedEntryIds) : null;
+		}
 	}
 
 	/**
@@ -60,10 +74,20 @@ public class AlbumPageTemplate extends AlbumPage {
 	public AlbumPageTemplate(AlbumPage page, LongSet templatedEntryIds, String createdBy, StringSet tags,
 			String thumbnail) {
 		this(null, page.getName(), page.getDescription(), createdBy, null, createdBy, null, null, null, tags, thumbnail,
-				page.getBackgroundStyle(), templatedEntryIds);
+				page.getBackgroundStyle(), null, templatedEntryIds);
 		Long dateCreated = new Date().getTime();
 		this.dateCreated = dateCreated;
 		this.dateLastModified = dateCreated;
+		// deep copy the array of entries from the page.
+		ArrayList<AlbumPageEntry> entriesToCopy = page != null ? page.getEntries() : null;
+		if (entriesToCopy != null) {
+			this.entries = new ArrayList<AlbumPageEntry>();
+			for (AlbumPageEntry entryToCopy : entriesToCopy) {
+				if (entryToCopy != null) {
+					this.entries.add(new AlbumPageEntry(entryToCopy));
+				}
+			}
+		}
 	}
 
 	/**
@@ -85,9 +109,10 @@ public class AlbumPageTemplate extends AlbumPage {
 	 */
 	public AlbumPageTemplate(Long id, String name, String description, String createdBy, Long dateCreated,
 			String lastModifiedBy, Long dateLastModified, StringSet likedByUsers, ArrayList<Comment> comments,
-			StringSet tags, String thumbnail, BackgroundStyle backgroundStyle, LongSet templatedEntryIds) {
+			StringSet tags, String thumbnail, BackgroundStyle backgroundStyle, ArrayList<AlbumPageEntry> entries,
+			LongSet templatedEntryIds) {
 		super(id, name, description, createdBy, dateCreated, lastModifiedBy, dateLastModified, likedByUsers, comments,
-				tags, thumbnail, backgroundStyle);
+				tags, thumbnail, backgroundStyle, entries);
 		this.templatedEntryIds = templatedEntryIds;
 	}
 

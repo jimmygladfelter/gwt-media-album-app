@@ -48,6 +48,29 @@ public class CommentableObject extends DescribeableObject {
 	}
 
 	/**
+	 * Copies a {@link CommentableObject}
+	 * 
+	 * @param toCopy
+	 *            - the {@link CommentableObject} to copy.
+	 */
+	public CommentableObject(CommentableObject toCopy) {
+		super(toCopy);
+		if (toCopy != null) {
+			// deep copy the array of comments.
+			ArrayList<Comment> commentsToCopy = toCopy.getComments();
+			if (commentsToCopy != null) {
+				this.comments = new ArrayList<Comment>();
+				for (Comment commentToCopy : commentsToCopy) {
+					if (commentToCopy != null) {
+						this.comments.add(new Comment(commentToCopy));
+					}
+				}
+			}
+			this.tags = toCopy.tags != null ? new StringSet(toCopy.tags) : null;
+		}
+	}
+
+	/**
 	 * Creates a new commentable object.
 	 * 
 	 * @param id

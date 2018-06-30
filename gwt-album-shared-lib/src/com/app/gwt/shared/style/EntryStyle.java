@@ -22,6 +22,20 @@ public class EntryStyle implements Serializable {
 	}
 
 	/**
+	 * Copies a {@link EntryStyle}
+	 * 
+	 * @param toCopy
+	 *            - the {@link EntryStyle} to copy.
+	 */
+	public EntryStyle(EntryStyle toCopy) {
+		super();
+		if (toCopy != null) {
+			this.backgroundStyle = toCopy.backgroundStyle != null ? new BackgroundStyle(toCopy.backgroundStyle) : null;
+			this.textStyle = toCopy.textStyle != null ? new TextStyle(toCopy.textStyle) : null;
+		}
+	}
+
+	/**
 	 * Creates a new entry style.
 	 * 
 	 * @param backgroundStyle

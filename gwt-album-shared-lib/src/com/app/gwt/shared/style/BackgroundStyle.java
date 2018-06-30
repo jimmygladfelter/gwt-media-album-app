@@ -41,6 +41,22 @@ public class BackgroundStyle implements Serializable {
 	}
 
 	/**
+	 * Copies a {@link BackgroundStyle}
+	 * 
+	 * @param toCopy
+	 *            - the {@link BackgroundStyle} to copy.
+	 */
+	public BackgroundStyle(BackgroundStyle toCopy) {
+		super();
+		if (toCopy != null) {
+			this.backgroundColor = toCopy.backgroundColor;
+			this.backgroundGradient = toCopy.backgroundGradient != null ? new Gradient(toCopy.backgroundGradient)
+					: null;
+			this.backgroundImage = toCopy.backgroundImage != null ? new MediaThumbnailStyle(backgroundImage) : null;
+		}
+	}
+
+	/**
 	 * Creates a new background color.
 	 * 
 	 * @param backgroundColor

@@ -43,12 +43,23 @@ public class LikeableBaseObject extends BaseObject {
 	}
 
 	/**
+	 * Copies a {@link LikeableBaseObject}
+	 * 
+	 * @param toCopy
+	 *            - the {@link LikeableBaseObject} to copy.
+	 */
+	public LikeableBaseObject(LikeableBaseObject toCopy) {
+		super(toCopy);
+		if (toCopy != null) {
+			this.likedByUsers = toCopy.likedByUsers != null ? new StringSet(toCopy.likedByUsers) : null;
+		}
+	}
+
+	/**
 	 * Creates a new likeable base object.
 	 * 
 	 * @param id
 	 * @param objectType
-	 * @param name
-	 * @param description
 	 * @param createdBy
 	 * @param dateCreated
 	 * @param lastModifiedBy
