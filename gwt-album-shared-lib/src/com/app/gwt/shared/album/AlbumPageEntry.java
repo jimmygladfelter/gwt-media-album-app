@@ -70,7 +70,7 @@ public class AlbumPageEntry extends BaseObject {
 	}
 
 	/**
-	 * Retrieves the positional x-coordinate of the entry relative to the album
+	 * Retrieves the positional x-coordinate of the entry relative to the album.
 	 * page.
 	 * 
 	 * @return the positional x-coordinate of the entry relative to the album page.
@@ -91,7 +91,7 @@ public class AlbumPageEntry extends BaseObject {
 	}
 
 	/**
-	 * Retrieves the positional y-coordinate of the entry relative to the album
+	 * Retrieves the positional y-coordinate of the entry relative to the album.
 	 * page.
 	 * 
 	 * @return the positional y-coordinate of the entry relative to the album page.
@@ -115,7 +115,7 @@ public class AlbumPageEntry extends BaseObject {
 	 * Sets the position of the entry relative to the album page.
 	 * 
 	 * @param x
-	 *            - the positional x-coordinate of the entry relative to the album
+	 *            - the positional x-coordinate of the entry relative to the album.
 	 *            page.
 	 * @param y
 	 *            - the positional y-coordinate of the entry relative to the album
