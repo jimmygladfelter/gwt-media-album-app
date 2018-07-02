@@ -66,5 +66,6 @@
 	
 	<dependencies>
 		<dependency org="com.media.album" name="albumsharedlib" rev="1.0-LOCAL-SNAPSHOT"/>
+		<dependency org="com.gwt.wrappers" name="createjs" rev="1.0-LOCAL-SNAPSHOT"/>
 	</dependencies>
 </ivy-module>
